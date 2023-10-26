@@ -1,0 +1,124 @@
+{
+    "version": 1,
+    "author": "Sai krishna",
+    "editor": "wokwi",
+    "parts": [
+      { "type": "wokwi-arduino-uno", "id": "uno", "top": 80.77, "left": 6.65, "attrs": {} },
+      {
+        "type": "wokwi-relay-module",
+        "id": "relay1",
+        "top": -82.22,
+        "left": 94.37,
+        "rotate": 270,
+        "attrs": {}
+      },
+      {
+        "type": "wokwi-relay-module",
+        "id": "relay2",
+        "top": -80.27,
+        "left": 189.45,
+        "rotate": 270,
+        "attrs": {}
+      },
+      {
+        "type": "wokwi-relay-module",
+        "id": "relay3",
+        "top": -84.16,
+        "left": -7.51,
+        "rotate": 270,
+        "attrs": {}
+      },
+      {
+        "type": "wokwi-relay-module",
+        "id": "relay4",
+        "top": -76.4,
+        "left": 286.47,
+        "rotate": 270,
+        "attrs": {}
+      },
+      {
+        "type": "wokwi-led",
+        "id": "led1",
+        "top": -70.79,
+        "left": 575.48,
+        "attrs": { "color": "red" }
+      },
+      {
+        "type": "wokwi-led",
+        "id": "led2",
+        "top": -78.47,
+        "left": 633.37,
+        "attrs": { "color": "red" }
+      },
+      {
+        "type": "wokwi-led",
+        "id": "led3",
+        "top": -73.16,
+        "left": 691.64,
+        "attrs": { "color": "red" }
+      },
+      {
+        "type": "wokwi-led",
+        "id": "led4",
+        "top": -74.24,
+        "left": 528.47,
+        "attrs": { "color": "green" }
+      },
+      { "type": "wokwi-gnd", "id": "gnd1", "top": 52.17, "left": 525.71, "attrs": {} },
+      { "type": "wokwi-vcc", "id": "vcc1", "top": -232.14, "left": 37.59, "attrs": {} },
+      { "type": "wokwi-vcc", "id": "vcc2", "top": -66.68, "left": -98.2, "attrs": {} },
+      { "type": "wokwi-gnd", "id": "gnd2", "top": 10.82, "left": -39.13, "attrs": {} },
+      { "type": "wokwi-ds1307", "id": "rtc1", "top": 290.32, "left": 365.18, "attrs": {} },
+      {
+        "type": "wokwi-lcd2004",
+        "id": "lcd1",
+        "top": 115.46,
+        "left": 445.46,
+        "attrs": { "pins": "i2c" }
+      },
+      { "type": "wokwi-dht22", "id": "dht1", "top": 139.2, "left": 377.13, "attrs": {} }
+    ],
+    "connections": [
+      [ "relay4:NO", "led3:A", "green", [ "v0.51", "h385.48", "v0", "h0", "v96.43", "h3.18" ] ],
+      [
+        "relay2:NO",
+        "led2:A",
+        "green",
+        [ "v-13.63", "h534.42", "v154.71", "h-23.31", "v-2.12", "h-109.15" ]
+      ],
+      [ "relay1:NO", "led1:A", "green", [ "v-24.4", "h648.58", "v197.1", "h-211.94", "v-11.66" ] ],
+      [ "relay3:NO", "led4:A", "green", [ "v101.52", "h486.59" ] ],
+      [ "led4:C", "led1:C", "green", [ "v0" ] ],
+      [ "led1:C", "led2:C", "green", [ "v0" ] ],
+      [ "led2:C", "led3:C", "green", [ "v0" ] ],
+      [ "led4:C", "gnd1:GND", "green", [ "v84.77", "h-11.64" ] ],
+      [ "relay3:COM", "relay1:COM", "green", [ "v-58.38", "h-5.96" ] ],
+      [ "relay1:COM", "relay2:COM", "green", [ "v-65.21", "h86.83", "v0", "h0" ] ],
+      [ "relay2:COM", "relay4:COM", "green", [ "v-69.12", "h88.59", "v0" ] ],
+      [ "vcc1:VCC", "relay3:COM", "red", [ "v0" ] ],
+      [ "relay3:VCC", "relay1:VCC", "red", [ "v20.34", "h99.93" ] ],
+      [ "relay1:VCC", "relay2:VCC", "red", [ "v20.35", "h91.96", "v0", "h0" ] ],
+      [ "relay2:VCC", "relay4:VCC", "red", [ "v18.4", "h95.68" ] ],
+      [ "relay3:GND", "relay1:GND", "black", [ "v33.05", "h103.62" ] ],
+      [ "relay1:GND", "relay2:GND", "black", [ "v29.16", "h95.65", "v0" ] ],
+      [ "relay2:GND", "relay4:GND", "black", [ "v29.16", "h96.44" ] ],
+      [ "relay3:VCC", "vcc2:VCC", "red", [ "v0" ] ],
+      [ "relay3:GND", "gnd2:GND", "black", [ "v0" ] ],
+      [ "rtc1:SCL", "uno:A5", "green", [ "h0" ] ],
+      [ "rtc1:SDA", "uno:A4", "green", [ "h0" ] ],
+      [ "rtc1:5V", "uno:5V", "red", [ "h0" ] ],
+      [ "rtc1:GND", "uno:GND.2", "black", [ "h0" ] ],
+      [ "lcd1:GND", "uno:GND.3", "black", [ "h0" ] ],
+      [ "lcd1:VCC", "uno:5V", "red", [ "h0" ] ],
+      [ "lcd1:SDA", "uno:A4", "green", [ "h0" ] ],
+      [ "lcd1:SCL", "uno:A5", "green", [ "h0" ] ],
+      [ "dht1:VCC", "uno:5V", "red", [ "v0" ] ],
+      [ "dht1:GND", "uno:GND.3", "black", [ "v40.03", "h-233.08" ] ],
+      [ "relay1:IN", "uno:2", "green", [ "v61.01", "h75.46" ] ],
+      [ "relay2:IN", "uno:3", "green", [ "v48.32", "h-27.89" ] ],
+      [ "relay3:IN", "uno:4", "green", [ "v53.86", "h153.37" ] ],
+      [ "relay4:IN", "uno:5", "green", [ "v36.18", "h-148.88" ] ],
+      [ "dht1:SDA", "uno:6", "green", [ "v-140.16", "h-198.91" ] ]
+    ],
+    "dependencies": {}
+  }
